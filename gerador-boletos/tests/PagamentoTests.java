@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import src.Pagamento;
 
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PagamentoTests {
     @Test
+    @DisplayName("Testa se o pagamento esta sendo criado com sucesso")
     void testCriacaoPagamento() {
         Date dataCriacao = new Date();
         Pagamento pagamento = new Pagamento(1500.0, dataCriacao, "BOLETO");

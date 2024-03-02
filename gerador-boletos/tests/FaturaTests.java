@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import src.Fatura;
 
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FaturaTests {
 
     @Test
+    @DisplayName("Testa se a fatura esta sendo criada com sucesso")
     void testCriacaoFatura() {
         Date dataCriacao = new Date();
         Fatura fatura = new Fatura("Gabriel Diniz", dataCriacao, 1500.0);
