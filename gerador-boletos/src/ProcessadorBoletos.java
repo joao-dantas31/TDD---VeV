@@ -18,6 +18,8 @@ public class ProcessadorBoletos {
             pagamentosEfetuados.add(novoPagamento);
         }
 
+        fatura.setPagamentos(pagamentosEfetuados);
+
         return pagamentosEfetuados;
     }
 }

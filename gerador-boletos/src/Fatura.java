@@ -1,11 +1,14 @@
 package src;
 
 import java.util.Date;
+import java.util.List;
 
 public class Fatura {
     private String cliente;
     private Date data;
     private double valor;
+    private List<Pagamento> pagamentos;
+
     public Fatura(String cliente, Date data, double valor) {
         this.cliente = cliente;
         this.data = data;
@@ -19,5 +22,11 @@ public class Fatura {
     }
     public double getValor() {
         return valor;
+    }
+    public List<Pagamento> getPagamentos() {
+        return this.pagamentos;
+    }
+    public void setPagamentos(List<Pagamento> pagamentosEfetuados) {
+        this.pagamentos = pagamentosEfetuados;
     }
 }
