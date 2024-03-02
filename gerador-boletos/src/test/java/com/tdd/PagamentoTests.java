@@ -1,8 +1,8 @@
-package tests;
+package com.tdd;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import src.Pagamento;
+import com.tdd.Pagamento;
 
 import java.util.Date;
 

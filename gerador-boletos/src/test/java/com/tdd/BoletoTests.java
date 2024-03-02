@@ -1,8 +1,8 @@
-package tests;
+package com.tdd;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import src.Boleto;
+import com.tdd.Boleto;
 
 import java.util.Date;
 
