@@ -35,6 +35,24 @@ public class ProcessadorBoletoTests {
         boletos.add(new Boleto("1324", new Date(), 150));
 
         List<Pagamento> pagamentos = pb.processa(fatura, boletos);
+
         assertEquals(3, pagamentos.size());
+    }
+
+    @Test
+    @DisplayName("Testa se os pagamentos estao sendo associados a fatura apos processar boletos")
+    void testPagamentoAssociacaoFatura(){
+        ProcessadorBoletos pb = new ProcessadorBoletos();
+        Fatura fatura = new Fatura("Gabriel", new Date(), 600);
+
+        ArrayList<Boleto> boletos = new ArrayList<Boleto>();
+        boletos.add(new Boleto("1234", new Date(), 100));
+        boletos.add(new Boleto("4321", new Date(), 250));
+        boletos.add(new Boleto("1324", new Date(), 150));
+
+        List<Pagamento> pagamentos = pb.processa(fatura, boletos);
+
+        assertEquals(pagamentos, fatura.getPagamentos());
+        assertEquals(3, fatura.getPagamentos().size());
     }
 }
