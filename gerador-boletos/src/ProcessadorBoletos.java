@@ -1,5 +1,7 @@
 package src;
 
-public class ProcesssadorBoletos {
-    public ProcesssadorBoletos();
+public class ProcessadorBoletos {
+    public ProcessadorBoletos() {
+
+    }
 }
