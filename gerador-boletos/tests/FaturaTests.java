@@ -16,8 +16,9 @@ public class FaturaTests {
         Date dataCriacao = new Date();
         Fatura fatura = new Fatura("Gabriel Diniz", dataCriacao, 1500.0);
 
-        assertEquals(fatura.getCliente(), "Gabriel Diniz");
-        assertEquals(fatura.getData(), dataCriacao);
-        assertEquals(fatura.getValor(), 1500.0);
+        assertEquals("Gabriel Diniz", fatura.getCliente());
+        assertEquals(dataCriacao, fatura.getData());
+        assertEquals(1500.0, fatura.getValor());
+        assertEquals("PENDENTE", fatura.getEstado());
     }
 }
