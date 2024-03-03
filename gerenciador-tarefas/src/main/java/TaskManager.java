@@ -8,10 +8,14 @@ public interface TaskManager {
 
     Task update(Long id, @Nullable String title, @Nullable String description, @Nullable Date dueDate, @Nullable Priority priority);
 
-    void delete(Long id);
+    boolean delete(Long id);
 
     List<Task> getAll();
 
     Task changePriority(Long id, Priority priority);
+
+    boolean isEmpty();
+
+    int size();
 
 }
