@@ -1,3 +1,9 @@
+package com.tdd;
+
+import com.tdd.Priority;
+import com.tdd.Task;
+import com.tdd.TaskManager;
+import com.tdd.TaskManagerImp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,3 +1,5 @@
+package com.tdd;
+
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
@@ -29,7 +31,7 @@ public class TaskManagerImp implements TaskManager {
         }
 
         if (priority == null) {
-            throw new NullPointerException("Priority cannot be null");
+            throw new NullPointerException("com.tdd.Priority cannot be null");
         }
 
         Task newTask = new Task(idGenerator.getAndIncrement(), title, description, dueDate, priority);
@@ -64,7 +66,7 @@ public class TaskManagerImp implements TaskManager {
     @Override
     public Task changePriority(Long id, Priority priority) {
         if (priority == null) {
-            throw new NullPointerException("Priority cannot be null");
+            throw new NullPointerException("com.tdd.Priority cannot be null");
         }
 
         return update(id, null, null, null, priority);
