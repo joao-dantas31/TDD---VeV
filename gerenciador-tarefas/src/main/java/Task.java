@@ -1,14 +1,12 @@
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @Setter(AccessLevel.NONE)
-public class Task {
+@Builder(toBuilder=true)
+public class Task implements Comparable<Task> {
 
     private Long id;
 
@@ -20,4 +18,16 @@ public class Task {
 
     private Priority priority;
 
+    @Override
+    public int compareTo(Task o) {
+        if (!this.priority.equals(o.getPriority())) {
+            return -1 * Integer.compare(this.priority.getPriority(), o.getPriority().getPriority());
+        }
+
+        if (!this.dueDate.equals(o.getDueDate())) {
+            return this.dueDate.compareTo(o.getDueDate());
+        }
+
+        return 0;
+    }
 }
