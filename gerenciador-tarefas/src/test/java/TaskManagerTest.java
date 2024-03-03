@@ -32,7 +32,7 @@ public class TaskManagerTest {
     }
 
     @Test
-    @DisplayName("Testa se o gerenciador consegue criar multiplas tarefas.")
+    @DisplayName("Testa se o gerenciador consegue criar múltiplas tarefas.")
     void testMultipleCreate() {
         manager.create("Tarefa 1", "Descrição da tarefa 1", new Date(999216000000L), Priority.LOW);
         manager.create("Tarefa 2", "Descrição da tarefa 2", new Date(1356609600000L), Priority.MEDIUM);
@@ -94,7 +94,7 @@ public class TaskManagerTest {
     }
 
     @Test
-    @DisplayName("Testa se o gerenciador lança exceção ao tentar atualizar uma tarefa invalida.")
+    @DisplayName("Testa se o gerenciador lança exceção ao tentar atualizar uma tarefa inválida.")
     void testNotFoundUpdate() {
         assertThrows(NoSuchElementException.class, () -> manager.update(1111L, null, null, null, null));
     }
@@ -156,7 +156,7 @@ public class TaskManagerTest {
     }
 
     @Test
-    @DisplayName("Testa se o gerenciador consegue alterar prioridade de uma tarefa.")
+    @DisplayName("Testa se o gerenciador consegue alterar a prioridade de uma tarefa.")
     void testPriorityChange() {
         Task task = manager.create("Tarefa 1", "Descrição da tarefa 1", new Date(999216000000L), Priority.LOW);
 
