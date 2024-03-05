@@ -1,8 +1,7 @@
-package tests;
+package com.tdd;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import src.Fatura;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package src;
+package com.tdd;
 
 import java.util.Date;
 import java.util.List;

@@ -1,11 +1,7 @@
-package tests;
+package com.tdd;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import src.Boleto;
-import src.Fatura;
-import src.Pagamento;
-import src.ProcessadorBoletos;
 
 import java.util.ArrayList;
 import java.util.Date;
