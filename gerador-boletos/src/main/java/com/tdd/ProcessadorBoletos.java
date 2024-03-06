@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProcessadorBoletos {
-    public ProcessadorBoletos() {
-
-    }
-
     public List<Pagamento> processa(Fatura fatura, List<Boleto> boletos) {
         List<Pagamento> pagamentosEfetuados = new ArrayList<>();
 
