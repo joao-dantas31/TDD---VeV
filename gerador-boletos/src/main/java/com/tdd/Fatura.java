@@ -8,13 +8,13 @@ public class Fatura {
     private Date data;
     private double valor;
     private List<Pagamento> pagamentos;
-    private String estado;
+    private EstadoFatura estado;
 
     public Fatura(String cliente, Date data, double valor) {
         this.cliente = cliente;
         this.data = data;
         this.valor = valor;
-        this.estado = "PENDENTE";
+        this.estado = EstadoFatura.PENDENTE;
     }
     public String getCliente() {
         return cliente;
@@ -29,7 +29,7 @@ public class Fatura {
         return this.pagamentos;
     }
     public String getEstado() {
-        return this.estado;
+        return this.estado.getEstado();
     }
     public void setPagamentos(List<Pagamento> pagamentosEfetuados) {
         double total = 0;
@@ -38,9 +38,9 @@ public class Fatura {
         }
 
         if (total >= this.valor) {
-            this.estado = "PAGA";
+            this.estado = EstadoFatura.PAGA;
         } else {
-            this.estado = "PENDENTE";
+            this.estado = EstadoFatura.PENDENTE;
         }
 
         this.pagamentos = pagamentosEfetuados;

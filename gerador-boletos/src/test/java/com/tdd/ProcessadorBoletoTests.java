@@ -1,5 +1,6 @@
 package com.tdd;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ProcessadorBoletoTests {
+    private ProcessadorBoletos pb;
+    private Fatura fatura;
+    private List<Boleto> boletos;
+
+    @BeforeEach
+    void setUp() {
+        pb = new ProcessadorBoletos();
+        fatura = new Fatura("Gabriel", new Date(), 600);
+
+        boletos = new ArrayList<Boleto>();
+        boletos.add(new Boleto("1234", new Date(), 100));
+        boletos.add(new Boleto("4321", new Date(), 250));
+        boletos.add(new Boleto("1324", new Date(), 250));
+    }
+
     @Test
     @DisplayName("Testa se o processador esta sendo criado com sucesso")
     void testCriacaoProcessadorBoletos() {
@@ -22,14 +38,6 @@ public class ProcessadorBoletoTests {
     @Test
     @DisplayName("Testa se o processador esta criando os pagamentos com sucesso")
     void testProcessamentoBoletos() {
-        ProcessadorBoletos pb = new ProcessadorBoletos();
-        Fatura fatura = new Fatura("Gabriel", new Date(), 600);
-
-        ArrayList<Boleto> boletos = new ArrayList<Boleto>();
-        boletos.add(new Boleto("1234", new Date(), 100));
-        boletos.add(new Boleto("4321", new Date(), 250));
-        boletos.add(new Boleto("1324", new Date(), 150));
-
         List<Pagamento> pagamentos = pb.processa(fatura, boletos);
 
         assertEquals(3, pagamentos.size());
@@ -37,15 +45,7 @@ public class ProcessadorBoletoTests {
 
     @Test
     @DisplayName("Testa se os pagamentos estao sendo associados a fatura apos processar boletos")
-    void testPagamentoAssociacaoFatura(){
-        ProcessadorBoletos pb = new ProcessadorBoletos();
-        Fatura fatura = new Fatura("Gabriel", new Date(), 600);
-
-        ArrayList<Boleto> boletos = new ArrayList<Boleto>();
-        boletos.add(new Boleto("1234", new Date(), 100));
-        boletos.add(new Boleto("4321", new Date(), 250));
-        boletos.add(new Boleto("1324", new Date(), 150));
-
+    void testPagamentoAssociacaoFatura() {
         List<Pagamento> pagamentos = pb.processa(fatura, boletos);
 
         assertEquals(pagamentos, fatura.getPagamentos());
@@ -53,25 +53,28 @@ public class ProcessadorBoletoTests {
     }
 
     @Test
-    @DisplayName("Testa se o estado da fatura esta sendo trocado ao efetuar um pagamento maior")
-    void testPagamentosAcimaValorFatura(){
-        ProcessadorBoletos pb = new ProcessadorBoletos();
-        Fatura fatura = new Fatura("Gabriel", new Date(), 500);
-
-        ArrayList<Boleto> boletos = new ArrayList<Boleto>();
-        boletos.add(new Boleto("1234", new Date(), 100));
-        boletos.add(new Boleto("4321", new Date(), 250));
-        boletos.add(new Boleto("1324", new Date(), 150));
-
+    @DisplayName("Testa se o estado da fatura esta sendo trocado ao efetuar um pagamento igual")
+    void testPagamentosIgualValorFatura() {
         List<Pagamento> pagamentos = pb.processa(fatura, boletos);
 
+        assertEquals(3, pagamentos.size());
         assertEquals("PAGA", fatura.getEstado());
     }
 
     @Test
+    @DisplayName("Testa se o estado da fatura esta sendo trocado ao efetuar um pagamento maior")
+    void testPagamentosAcimaValorFatura() {
+        boletos.add(new Boleto("134", new Date(), 250));
+        List<Pagamento> pagamentos = pb.processa(fatura, boletos);
+
+        assertEquals(4, pagamentos.size());
+        assertEquals("PAGA", fatura.getEstado());
+    }
+
+
+    @Test
     @DisplayName("Testa se o estado da fatura se mantem o mesmo ao efetuar um pagamento menor")
-    void testPagamentosAbaixoValorFatura(){
-        ProcessadorBoletos pb = new ProcessadorBoletos();
+    void testPagamentosAbaixoValorFatura() {
         Fatura fatura = new Fatura("Gabriel", new Date(), 500);
 
         ArrayList<Boleto> boletos = new ArrayList<Boleto>();
@@ -81,6 +84,7 @@ public class ProcessadorBoletoTests {
 
         List<Pagamento> pagamentos = pb.processa(fatura, boletos);
 
+        assertEquals(3, pagamentos.size());
         assertEquals("PENDENTE", fatura.getEstado());
     }
 }
