@@ -1,6 +1,6 @@
 ## Alunos
 
-* Gabriel: - Gerador de Boletos
+* Gabriel: 121111468 - Gerador de Boletos
 * João Paulo Alves Dantas: 119210258 - Gerenciador de Tarefas
 
 ## Execução
